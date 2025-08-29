@@ -2,7 +2,16 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { getStoredUser, getStoredSession, clearSession, isAuthenticated } from '../lib/api'
+import CreatePlaylistForm from "@/components/CreatePlaylistForm";
 
+export default function Dashboard() {
+  return (
+    <div>
+      <h1>Your Dashboard</h1>
+      <CreatePlaylistForm />
+    </div>
+  );
+}
 export default function Dashboard() {
   const router = useRouter()
   const [user, setUser] = useState(null)
