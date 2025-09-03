@@ -1,5 +1,5 @@
-const prisma = require('../../../lib/prisma')
-const { requireAuth, validateRequiredFields, handleApiError } = require('../../../lib/auth-utils')
+import prisma from '../../../lib/prisma'
+import { requireAuth, validateRequiredFields, handleApiError } from '../../../lib/auth-utils'
 
 /**
  * Playlists API
@@ -26,6 +26,9 @@ async function createPlaylist(req, res) {
   try {
     const { name, description } = req.body
 
+    console.log('Creating playlist for user:', req.user);
+    console.log('Playlist data:', { name, description });
+
     // Validate required fields
     const validationError = validateRequiredFields(req.body, ['name'])
     if (validationError) {
@@ -47,11 +50,10 @@ async function createPlaylist(req, res) {
       })
     }
 
-    // Create playlist
+    // Create playlist (note: description field is not in schema, so we ignore it)
     const playlist = await prisma.playlist.create({
       data: {
         name: name.trim(),
-        description: description ? description.trim() : null,
         owner_id: req.user.id
       },
       include: {
@@ -69,12 +71,13 @@ async function createPlaylist(req, res) {
       }
     })
 
+    console.log('Playlist created successfully:', playlist);
+
     return res.status(201).json({
       message: 'Playlist created successfully',
       playlist: {
         id: playlist.id,
         name: playlist.name,
-        description: playlist.description,
         created_at: playlist.created_at,
         owner: playlist.owner,
         song_count: playlist._count.songs
@@ -82,6 +85,7 @@ async function createPlaylist(req, res) {
     })
 
   } catch (error) {
+    console.error('Playlist creation error:', error);
     return handleApiError(res, error, 'Failed to create playlist')
   }
 }
@@ -182,4 +186,4 @@ async function getUserPlaylists(req, res) {
 }
 
 // Apply authentication middleware
-module.exports = requireAuth(handler)
+export default requireAuth(handler)

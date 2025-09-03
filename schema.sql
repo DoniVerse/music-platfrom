@@ -6,9 +6,12 @@ CREATE TABLE IF NOT EXISTS users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     auth_uid TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
     name TEXT,
     role TEXT DEFAULT 'user',
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
 -- Songs table
@@ -31,7 +34,7 @@ CREATE TABLE IF NOT EXISTS playlists (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
 );
 
--- Playlist Songs (many-to-many relationship)
+-- Playlist Songs table (many-to-many)
 CREATE TABLE IF NOT EXISTS playlist_songs (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     playlist_id UUID REFERENCES playlists(id) ON DELETE CASCADE,
@@ -40,7 +43,7 @@ CREATE TABLE IF NOT EXISTS playlist_songs (
     UNIQUE(playlist_id, song_id)
 );
 
--- User Likes (many-to-many: users like songs)
+-- User Likes table (many-to-many)
 CREATE TABLE IF NOT EXISTS user_likes (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -49,7 +52,7 @@ CREATE TABLE IF NOT EXISTS user_likes (
     UNIQUE(user_id, song_id)
 );
 
--- User Play History (tracks plays)
+-- Play History table
 CREATE TABLE IF NOT EXISTS play_history (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     user_id UUID REFERENCES users(id) ON DELETE CASCADE,
