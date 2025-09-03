@@ -18,7 +18,7 @@ export default function PlaylistDetail() {
     if (playlistId) {
       fetchPlaylistData();
     }
-  }, [playlistId]);
+  }, [playlistId, fetchPlaylistData]);
 
   const fetchPlaylistData = async () => {
     try {

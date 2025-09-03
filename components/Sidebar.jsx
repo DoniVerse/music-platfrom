@@ -170,7 +170,11 @@ export default function Sidebar() {
             )}
           </div>
         </div>
-                <LogoutButton />
+        
+        {/* Logout Button - Moved to bottom */}
+        <div className="mt-auto pt-4 border-t border-[#3A3F5F]">
+          <LogoutButton />
+        </div>
       </nav>
     </aside>
   );
