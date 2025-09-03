@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import { FaArrowLeft, FaPlay, FaTrash } from "react-icons/fa";
 import MusicCard from "../Music";
@@ -14,13 +14,7 @@ export default function PlaylistDetail() {
   const [isLoading, setIsLoading] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  useEffect(() => {
-    if (playlistId) {
-      fetchPlaylistData();
-    }
-  }, [playlistId, fetchPlaylistData]);
-
-  const fetchPlaylistData = async () => {
+  const fetchPlaylistData = useCallback(async () => {
     try {
       setIsLoading(true);
       const data = await fetchPlaylists(true); // Include songs
@@ -28,20 +22,20 @@ export default function PlaylistDetail() {
       if (foundPlaylist) {
         setPlaylist(foundPlaylist);
       } else {
-        router.push('/Main');
+        router.push('/404');
       }
     } catch (error) {
       console.error('Error fetching playlist:', error);
-      if (error.message.includes('Authentication required')) {
-        alert('Please log in to view playlists');
-        router.push('/login');
-      } else {
-        router.push('/Main');
-      }
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [playlistId, router]);
+
+  useEffect(() => {
+    if (playlistId) {
+      fetchPlaylistData();
+    }
+  }, [playlistId, fetchPlaylistData]);
 
   const handleSongPlay = (song) => {
     setCurrentSong(song);

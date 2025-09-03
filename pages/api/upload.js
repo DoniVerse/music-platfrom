@@ -1,4 +1,4 @@
-import supabase from "../../lib/supabaseClient"; // the client you made
+import supabase from "../../lib/supabase"; // Updated import path
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
