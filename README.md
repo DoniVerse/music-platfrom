@@ -1,40 +1,87 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Music Platform
 
-## Getting Started
+A full-featured music streaming platform with search, playback, playlists, and user authentication.
 
-First, run the development server:
+## 🎥 Demo Video
+[![Watch the demo](https://img.youtube.com/vi/iUwbQjs3P_s/0.jpg)](https://youtu.be/iUwbQjs3P_s)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 👥 Team Members
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **John Doe** - Full Stack Developer (Authentication & Backend)
+- **Jane Smith** - Frontend Developer (UI/UX & Playlist Management)
+- **Alex Johnson** - Backend Developer (API Development & Database)
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## ✨ Features
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+- 🔍 Real-time music search
+- 🎵 Music playback with full player controls
+- 📝 Playlist creation and management
+- ❤️ Like/favorite songs
+- 📱 Responsive design
+- 🔐 Secure authentication with email verification
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## 📧 Email Verification Process
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Registration**: 
+   - User signs up with email and password
+   - System sends verification email with confirmation link
 
-## Learn More
+2. **Email Confirmation**:
+   - User checks their email and clicks the verification link
+   - Link redirects to: `[your-site]/auth/confirm?token=[verification-token]`
+   - Backend verifies the token and activates the account
 
-To learn more about Next.js, take a look at the following resources:
+3. **First Login**:
+   - User can now log in with their credentials
+   - Unverified accounts are restricted from certain features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+## 🚀 Getting Started
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Prerequisites
+- Node.js 16+
+- npm or yarn
+- Supabase account
+- PostgreSQL database
 
-## Deploy on Vercel
+### Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/music-platform.git
+   cd music-platform
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn
+   ```
+
+3. Set up environment variables:
+   ```env
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   DATABASE_URL=your_database_url
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+5. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🔧 Technologies Used
+
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: Next.js API Routes
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: Supabase Auth
+- **Storage**: Supabase Storage
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
