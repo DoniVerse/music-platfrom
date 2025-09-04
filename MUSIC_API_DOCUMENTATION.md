@@ -342,11 +342,4 @@ All endpoints return consistent error responses:
 - `CONFLICT` (409) - Resource already exists
 - `METHOD_NOT_ALLOWED` (405) - HTTP method not supported
 
-## 🧪 **Testing**
 
-Run the comprehensive test suite:
-```bash
-node test-music-apis.js
-```
-
-This will test all endpoints with proper authentication and authorization.
