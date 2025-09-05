@@ -6,11 +6,11 @@ A full-featured music streaming platform with search, playback, playlists, and u
 [![Watch the demo](https://img.youtube.com/vi/iUwbQjs3P_s/0.jpg)](https://youtu.be/iUwbQjs3P_s)
 
 ## 👥 Team Members
-
-- **John Doe** - Full Stack Developer (Authentication & Backend)
-- **Jane Smith** - Frontend Developer (UI/UX & Playlist Management)
-- **Alex Johnson** - Backend Developer (API Development & Database)
-
+Arsema Teferi  - Backend Developer
+Meron Kassahun - Frontend Developer
+Hermela Dereje - Frontend Developer
+Haileiyesus Mulat - Frontend Developer
+- 
 ## ✨ Features
 
 - 🔍 Real-time music search
@@ -28,7 +28,7 @@ A full-featured music streaming platform with search, playback, playlists, and u
 
 2. **Email Confirmation**:
    - User checks their email and clicks the verification link
-   - Link redirects to: `[your-site]/auth/confirm?token=[verification-token]`
+   - Link redirects to: `another page which can say site cant be reached but is conforming the email `
    - Backend verifies the token and activates the account
 
 3. **First Login**:
@@ -47,7 +47,7 @@ A full-featured music streaming platform with search, playback, playlists, and u
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/music-platform.git
+   git clone https://github.com/DoniVerse/music-platfrom.git
    cd music-platform
    ```
 
